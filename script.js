@@ -2,6 +2,7 @@ import { data } from './data.js'; // Import data from data.js
 
 const overlay = document.querySelector(".overlay");
 const closebtn = document.querySelector("#close-btn");
+const itemDetails = document.querySelector(".items-details");
 
 const tl = gsap.timeline({ paused: true, overwrite: "auto" });
 
@@ -14,22 +15,28 @@ function updateOverlay(itemData) {
   document.getElementById("item-img").src = itemData.imgSrc;
 }
 
-const items = document.querySelectorAll(".item"); // Use querySelectorAll to get all items
+const items = document.querySelectorAll(".items .item");
 
 items.forEach((item, index) => {
   item.addEventListener("click", () => {
     updateOverlay(data[index]);
+
+    // Add animation to bring the overlay to view and reset rotation to 0 degrees
+    tl.to(overlay, { bottom: "0px", rotation: 0, duration: 0.5, ease: "power3.inOut" });
     tl.play();
   });
 });
 
 closebtn.addEventListener("click", () => {
+  // Add animation to hide the overlay and rotate it
+  tl.to(overlay, { bottom: -1200, rotation: 20, duration: 0.5, ease: "power3.inOut" });
   tl.reverse();
 });
 
 document.addEventListener("click", (e) => {
   if (!overlay.contains(e.target) && !isItem(e.target)) {
-    // Check if the clicked element is not within the overlay
+    // Add animation to hide the overlay and rotate it
+    tl.to(overlay, { bottom: "-1200px", rotation: 20, duration: 0.5, ease: "power3.inOut" });
     tl.reverse();
   }
 });
