@@ -49,6 +49,15 @@ function isItem(target) {
 }
 gsap.from(items, { opacity: 0, y: 30, duration: 0.5, stagger: 0.2 });
 
+
+// tl.from(imgSrc, {
+//   z: -4, 
+//  rotation: 0,
+//   duration: 0.5,
+//   transformOrigin: "center",
+//    ease: "power3.inOut" });
+ 
+
 // Animate navigation bar
 gsap.from(nav, { y: -30, opacity: 0, duration: 0.5, delay: 0.5 });
 

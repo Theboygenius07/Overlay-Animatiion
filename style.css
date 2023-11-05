@@ -70,7 +70,7 @@ a{
 
 .item{
     display: flex;
-    padding: 0.25em 0.5em;
+    padding: 0.25vw 0.5vw;
     cursor: pointer;
 }
 .item-index{
@@ -88,8 +88,8 @@ a{
     bottom: -1200px;
     right: 0;
     width: 70%;
-    height: 700px;
-    padding: 7em 2em;
+    height: 90vh;
+    padding: 6vw 4vw;
    
     background: #fff;
     color: #000;
@@ -163,6 +163,16 @@ img{
 
 @media (max-width: 900px){
 
+
+    .bigContainer{
+        height: 100vh;
+        overflow: hidden;
+    }
+    .nav{
+        width: 100vw;
+        padding: 2em;
+    }
+
     html,
     body{
         overflow: hidden;
@@ -172,13 +182,16 @@ img{
 
   
     .items {
-        width: 100%;
+        width: 100vw;
         bottom: 8em;
     }
+    .item{
+        padding-bottom: 2vw;
 
+    }
     .overlay{
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
         /* right: 0;
         left: 0;
         top: 0;
