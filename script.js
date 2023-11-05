@@ -6,14 +6,13 @@ const itemDetails = document.querySelector(".items-details");
 
 const tl = gsap.timeline({ paused: true, overwrite: "auto" });
 
-function updateOverlay(itemData) {
-  // Update overlay content with the itemData
-  document.getElementById("item-name").textContent = itemData.name;
-  document.getElementById("item-category").textContent = itemData.category;
-  document.getElementById("item-link").href = itemData.link;
-  document.getElementById("item-copy").textContent = itemData.copy;
-  document.getElementById("item-img").src = itemData.imgSrc;
-}
+tl.to(overlay, {
+ bottom: "0px", 
+rotation: 0,
+ duration: 0.5,
+ transformOrigin: "bottom center",
+  ease: "power3.inOut" });
+
 
 const items = document.querySelectorAll(".items .item");
 
@@ -21,22 +20,26 @@ items.forEach((item, index) => {
   item.addEventListener("click", () => {
     updateOverlay(data[index]);
 
-    // Add animation to bring the overlay to view and reset rotation to 0 degrees
-    tl.to(overlay, { bottom: "0px", rotation: 0, duration: 0.5, ease: "power3.inOut" });
     tl.play();
   });
 });
 
 closebtn.addEventListener("click", () => {
-  // Add animation to hide the overlay and rotate it
-  tl.to(overlay, { bottom: -1200, rotation: 20, duration: 0.5, ease: "power3.inOut" });
   tl.reverse();
 });
+
+function updateOverlay(itemData) {
+    // Update overlay content with the itemData
+    document.getElementById("item-name").textContent = itemData.name;
+    document.getElementById("item-category").textContent = itemData.category;
+    document.getElementById("item-link").href = itemData.link;
+    document.getElementById("item-copy").textContent = itemData.copy;
+    document.getElementById("item-img").src = itemData.imgSrc;
+  }
 
 document.addEventListener("click", (e) => {
   if (!overlay.contains(e.target) && !isItem(e.target)) {
     // Add animation to hide the overlay and rotate it
-    tl.to(overlay, { bottom: "-1200px", rotation: 20, duration: 0.5, ease: "power3.inOut" });
     tl.reverse();
   }
 });
@@ -44,3 +47,8 @@ document.addEventListener("click", (e) => {
 function isItem(target) {
   return target.closest('.item');
 }
+gsap.from(items, { opacity: 0, y: 30, duration: 0.5, stagger: 0.2 });
+
+// Animate navigation bar
+gsap.from(nav, { y: -30, opacity: 0, duration: 0.5, delay: 0.5 });
+

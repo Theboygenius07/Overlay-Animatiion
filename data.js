@@ -11,14 +11,14 @@ const data = [
       category: "Fashion",
       link: "#",
       copy: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta perferendis assumenda cupiditate placeat quidem cumque vel iusto delectus eaque minus.",
-      imgSrc: "hero.jpg",
+      imgSrc: "hero2.jpg",
     },
     {
       name: "Atmospheric Aero-adaption",
       category: "Technology",
       link: "#",
       copy: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta perferendis assumenda cupiditate placeat quidem cumque vel iusto delectus eaque minus.",
-      imgSrc: "hero.jpg",
+      imgSrc: "hero3.jpg",
     },
     {
       name: "3D Holographic Printing",
